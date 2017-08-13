@@ -20,3 +20,6 @@ class BucketListForm(Form):
     description = TextAreaField('description', validators=[DataRequired()])
 
 
+class BucketListItemForm(Form):
+    name = StringField('username', validators=[DataRequired()])
+    date = DateField('password', validators=[DataRequired()])
