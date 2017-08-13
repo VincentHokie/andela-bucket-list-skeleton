@@ -10,61 +10,61 @@ def index():
 
 
 @app.route("/sign-up", methods=['GET', 'POST'])
-def index():
+def sign_up():
     return "Hello Worldj"
 
 
 @app.route("/login", methods=['GET', 'POST'])
-def index():
+def login():
     return "Hello Worldj"
 
 
 @app.route("/logout", methods=['GET'])
-def index():
+def logout():
     return "Hello Worldj"
 
 
 
-#bucket list crud routes
+# bucket list crud routes
 @app.route("/create/bucket-list", methods=['GET', 'POST'])
-def index():
+def create_bucket_list():
     return "Hello Worldj"
 
 
-@app.route("/update/bucket-list/<bucketListId>", methods=['GET', 'POST'])
-def index():
+@app.route("/update/bucket-list/<bucket_list_id>", methods=['GET', 'POST'])
+def update_bucket_list(bucket_list_id):
     return "Hello Worldj"
 
 
 @app.route("/view/bucket-lists", methods=['GET', 'POST'])
-def index():
+def view_bucket_list():
     return "Hello Worldj"
 
 
-@app.route("/delete/bucket-list/<bucketListId>", methods=['POST'])
-def index():
+@app.route("/delete/bucket-list/<bucket_list_id>", methods=['POST'])
+def delete_bucket_list(bucket_list_id):
     return "Hello Worldj"
 
 
 
 
 
-#bucket list items crud routes
-@app.route("/create/<bucketList>/item", methods=['GET', 'POST'])
-def index():
+# bucket list items crud routes
+@app.route("/create/<bucket_list>/item", methods=['GET', 'POST'])
+def create_bucket_list_item(bucket_list):
     return "Hello Worldj"
 
 
-@app.route("/update/<bucketList>/item/<itemId>", methods=['GET', 'POST'])
-def index():
+@app.route("/update/<bucket_list>/item/<item_id>", methods=['GET', 'POST'])
+def update_bucket_list_item(bucket_list, item_id):
     return "Hello Worldj"
 
 
-@app.route("/view/<bucketList>/items", methods=['GET', 'POST'])
-def index():
+@app.route("/view/<bucket_list>/items", methods=['GET', 'POST'])
+def view_bucket_list_item(bucket_list):
     return "Hello Worldj"
 
 
-@app.route("/delete/bucket-list-item/<itemId>", methods=['POST'])
-def index():
+@app.route("/delete/bucket-list-item/<item_id>", methods=['POST'])
+def delete_bucket_list_item(item_id):
     return "Hello Worldj"
