@@ -14,3 +14,9 @@ class SignUpForm(Form):
     password = PasswordField('password', validators=[DataRequired()])
     password2 = PasswordField('password2', validators=[DataRequired()])
 
+
+class BucketListForm(Form):
+    name = StringField('name', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])
+
+
