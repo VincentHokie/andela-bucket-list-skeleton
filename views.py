@@ -8,10 +8,6 @@ def index():
     return "Hello Worldj"
 
 
-@app.route("/index")
-def index():
-    return "Hello Worldj"
-
 
 @app.route("/sign-up", methods=['GET', 'POST'])
 def index():
