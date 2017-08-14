@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ user.nickname }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
+<h1>Hi, nyumbani!</h1>
+
+<hr>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li class="{{ message.class_name }}">{{ message.message }} </li>
     {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
 {% endblock %}
