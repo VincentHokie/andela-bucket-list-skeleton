@@ -1,25 +1,52 @@
 __author__ = 'MacUser'
 
-from flask import render_template
+from flask import render_template, redirect, flash
 from . import app
+from .forms import LoginForm, SignUpForm, BucketListForm, BucketListItemForm
 
+
+# home page route definition
 @app.route("/")
 @app.route("/index")
 def index():
-    return "Hello Worldj"
+    return render_template("index.html",
+                           title='Home')
 
 
 
+# authentication route definitions
 @app.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
-    return render_template("auth/sign-up.html",
-                           title='Create Profile')
+    form = SignUpForm()
 
+    if form.validate_on_submit():
+        flash('Login requested for un="%s", pw=%s' %
+              (form.username.data, str(form.password.data)))
+        return redirect('/index')
+
+    return render_template("auth/sign-up.html",
+                           title='Create Profile',
+                           form=form)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    form = LoginForm()
+
+    if form.validate_on_submit():
+
+        flash(
+            {
+                "message": 'Login requested for un="%s", pw=%s' %
+                           (form.username.data, str(form.password.data)),
+                "class_name": "success"
+            }
+        )
+
+        return redirect('/index')
+
     return render_template("auth/login.html",
-                           title='Login')
+                           title='Login',
+                           form=form)
 
 
 @app.route("/logout", methods=['GET'])
@@ -29,17 +56,33 @@ def logout():
 
 
 
+
 # bucket list crud routes
 @app.route("/create/bucket-list", methods=['GET', 'POST'])
 def create_bucket_list():
-    return render_template("bucket-list/create.html",
-                           title='Create Bucket List')
+    form = BucketListForm()
 
+    if form.validate_on_submit():
+        flash('Login requested for un="%s", pw=%s' %
+              (form.username.data, str(form.password.data)))
+        return redirect('/index')
+
+    return render_template("bucket-list/create.html",
+                           title='Create Bucket List',
+                           form=form)
 
 @app.route("/update/bucket-list/<bucket_list_id>", methods=['GET', 'POST'])
 def update_bucket_list(bucket_list_id):
+    form = BucketListForm()
+
+    if form.validate_on_submit():
+        flash('Login requested for un="%s", pw=%s' %
+              (form.username.data, str(form.password.data)))
+        return redirect('/index')
+
     return render_template("bucket-list/update.html",
-                           title='Update Bucket List')
+                           title='Update Bucket List',
+                           form=form)
 
 
 @app.route("/view/bucket-lists", methods=['GET', 'POST'])
@@ -59,20 +102,36 @@ def delete_bucket_list(bucket_list_id):
 # bucket list items crud routes
 @app.route("/create/<bucket_list>/item", methods=['GET', 'POST'])
 def create_bucket_list_item(bucket_list):
-    return render_template("bucket-list-item/view.html",
-                           title='View Bucket Lists')
+    form = BucketListItemForm()
+
+    if form.validate_on_submit():
+        flash('Login requested for un="%s", pw=%s' %
+              (form.username.data, str(form.password.data)))
+        return redirect('/index')
+
+    return render_template("bucket-list-item/create.html",
+                           title='View Bucket List Items',
+                           form=form)
 
 
 @app.route("/update/<bucket_list>/item/<item_id>", methods=['GET', 'POST'])
 def update_bucket_list_item(bucket_list, item_id):
-    return render_template("bucket-list-item/view.html",
-                           title='View Bucket Lists')
+    form = BucketListItemForm()
+
+    if form.validate_on_submit():
+        flash('Login requested for un="%s", pw=%s' %
+              (form.username.data, str(form.password.data)))
+        return redirect('/index')
+
+    return render_template("bucket-list-item/update.html",
+                           title='Update Bucket List item',
+                           form=form)
 
 
 @app.route("/view/<bucket_list>/items", methods=['GET', 'POST'])
 def view_bucket_list_item(bucket_list):
     return render_template("bucket-list-item/view.html",
-                           title='View Bucket Lists')
+                           title='View Bucket List Items')
 
 
 @app.route("/delete/bucket-list-item/<item_id>", methods=['POST'])
